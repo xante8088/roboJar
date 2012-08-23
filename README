@@ -5,6 +5,8 @@ ttapi
 cradle
 couchdb
 
-run.js
+
+create a db with bot's name (lowercase)
+node run.js
 
 Good luck and godspeed.
