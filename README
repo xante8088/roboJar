@@ -5,7 +5,7 @@ ttapi
 cradle
 couchdb
 
-
+Auth not needed Auth+Live+ if your auth does not feature it when returned by ttapi bookmarklet
 create a db with bot's name (lowercase)
 node run.js
 
