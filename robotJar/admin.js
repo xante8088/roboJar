@@ -51,7 +51,7 @@ var Admin = function(j) {
 		return false;
 	}
 	self.handle = function(reply, d, ispm) {
-		if (d.text.substr(0,1) != "/")
+		if (d.text.substr(0,1) != "!")
 			return;
 			
 		var tcmd = d.text.split(' ');
@@ -60,20 +60,20 @@ var Admin = function(j) {
 			if (tcmd[i].length > 0)
 				cmd.push(tcmd[i]);
 		}
-		if (cmd[0] == "/eval") j.admin(d.userid, function() {
-			j.log(j.color.red(d.name + " ran " + d.text));
+		if (cmd[0] == "!eval") j.admin(d.userid, function() {
+			j.log(j.color.purple(d.name + " ran " + d.text));
 			j.log(cmd);
 			var torun = '';
 			for(var i=1, l=cmd.length;i<l;++i) {
 				torun += cmd[i] + ' ';
 			}
-			j.log("Executing: " + j.color.red(torun));
+			j.log("Executing: " + j.color.purple(torun));
 			setTimeout(function() {
 				j.run(torun, true);
 			}, 0);
 			//*/
 		});
-		if (cmd[0] == "/load") j.admin(d.userid, function() {
+		if (cmd[0] == "!load") j.admin(d.userid, function() {
 			setTimeout(function() {
 				j.run(function() {
 					j.loadModule(cmd[1]);
@@ -81,7 +81,7 @@ var Admin = function(j) {
 				}, true);
 			}, 0);
 		});
-		if (cmd[0] == "/unload") j.admin(d.userid, function() {
+		if (cmd[0] == "!unload") j.admin(d.userid, function() {
 			setTimeout(function() {
 				j.run(function() {
 					j.unloadModule(cmd[1], function(n) {
@@ -90,7 +90,7 @@ var Admin = function(j) {
 				}, true);
 			}, 0);
 		});
-		if (cmd[0] == "/escort") j.vip(d.userid, function() {
+		if (cmd[0] == "!escort") j.vip(d.userid, function() {
 			if (cmd.length < 2)
 				return reply("You must specify a user to boot");
 			var user="";
@@ -118,7 +118,7 @@ var Admin = function(j) {
 				}
 			});
 		});
-		if (cmd[0] == "/boot") j.vip(d.userid, function() {
+		if (cmd[0] == "!boot") j.vip(d.userid, function() {
 			if (cmd.length < 2)
 				return reply("You must specify a user to boot");
 			var user="";
@@ -149,7 +149,7 @@ var Admin = function(j) {
 				}
 			});
 		});
-		if (cmd[0] == "/say" || cmd[0] == "/msg") j.vip(d.userid, function() {
+		if (cmd[0] == "!say" || cmd[0] == "!msg") j.vip(d.userid, function() {
 			if (cmd.length < 2)
 				return reply("I'm not saying that.");
 			var msg = "";
@@ -159,6 +159,52 @@ var Admin = function(j) {
 			j.speak(msg);
 			if (ispm)
 				reply(msg);
+		});
+		if (cmd[0] == "!mock") j.vip(d.userid, function() {
+			if (cmd.length < 2)
+				return reply("I'm not saying that.");
+			var user="";
+			var userid=null;
+			var senderName = d.name;
+			for (var i = 1; i < cmd.length; ++i)
+				user += cmd[i]+(i+1 === cmd.length?"":" ");
+
+			if (user in j.userNames) {
+				userid = j.userNames[user];
+			}
+			if (user in j.users) {
+				userid = user;
+				user = j.users[userid].name;
+			}
+			if (userid === null)
+				return reply("Failed to find the user " + user);
+
+			if (userid == config.userid)
+				return reply("I'm sorry, I can't let you do that.");
+			j.bot.speak(user + ", " + j.lang.get('mock'));
+		});
+			if (cmd[0] == "!pickup") j.vip(d.userid, function() {
+			if (cmd.length < 2)
+				return reply("I'm not saying that.");
+			var user="";
+			var userid=null;
+			var senderName = d.name;
+			for (var i = 1; i < cmd.length; ++i)
+				user += cmd[i]+(i+1 === cmd.length?"":" ");
+
+			if (user in j.userNames) {
+				userid = j.userNames[user];
+			}
+			if (user in j.users) {
+				userid = user;
+				user = j.users[userid].name;
+			}
+			if (userid === null)
+				return reply("Failed to find the user " + user);
+
+			if (userid == config.userid)
+				return reply("I'm sorry, I can't let you do that.");
+			j.bot.speak("@" + user + ", " + j.lang.get('pickup'));
 		});
 	};
 };
