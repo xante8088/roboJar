@@ -160,51 +160,74 @@ var Admin = function(j) {
 			if (ispm)
 				reply(msg);
 		});
-		if (cmd[0] == "!mock") j.vip(d.userid, function() {
-			if (cmd.length < 2)
-				return reply("I'm not saying that.");
-			var user="";
-			var userid=null;
-			var senderName = d.name;
-			for (var i = 1; i < cmd.length; ++i)
-				user += cmd[i]+(i+1 === cmd.length?"":" ");
-
-			if (user in j.userNames) {
-				userid = j.userNames[user];
-			}
-			if (user in j.users) {
-				userid = user;
-				user = j.users[userid].name;
-			}
-			if (userid === null)
-				return reply("Failed to find the user " + user);
-
-			if (userid == config.userid)
-				return reply("I'm sorry, I can't let you do that.");
+ 		if (cmd[0] == "!mock") j.vip(d.userid, function() {
+ 			if (cmd.length < 2)
+ 				return reply("I'm not saying that.");
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+ 			for (var i = 1; i < cmd.length; ++i)
+ 				user += cmd[i]+(i+1 === cmd.length?"":" ");
+ 
+ 			if (user in j.userNames) {
+ 				userid = j.userNames[user];
+ 			}
+ 			if (user in j.users) {
+ 				userid = user;
+ 				user = j.users[userid].name;
+ 			}
+ 			if (userid === null)
+ 				return reply("Failed to find the user " + user);
+ 
+ 			if (userid == config.userid)
+ 				return reply("I'm sorry, I can't let you do that.");
 			j.bot.speak(user + ", " + j.lang.get('mock'));
 		});
-			if (cmd[0] == "!pickup") j.vip(d.userid, function() {
-			if (cmd.length < 2)
-				return reply("I'm not saying that.");
-			var user="";
-			var userid=null;
-			var senderName = d.name;
-			for (var i = 1; i < cmd.length; ++i)
-				user += cmd[i]+(i+1 === cmd.length?"":" ");
-
-			if (user in j.userNames) {
+ 			if (cmd[0] == "!pickup") j.vip(d.userid, function() {
+ 			if (cmd.length < 2)
+ 				return reply("I'm not saying that.");
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+ 			for (var i = 1; i < cmd.length; ++i)
+ 				user += cmd[i]+(i+1 === cmd.length?"":" ");
+ 
+ 			if (user in j.userNames) {
 				userid = j.userNames[user];
-			}
-			if (user in j.users) {
-				userid = user;
-				user = j.users[userid].name;
-			}
-			if (userid === null)
-				return reply("Failed to find the user " + user);
-
-			if (userid == config.userid)
-				return reply("I'm sorry, I can't let you do that.");
-			j.bot.speak("@" + user + ", " + j.lang.get('pickup'));
+ 			}
+ 			if (user in j.users) {
+ 				userid = user;
+ 				user = j.users[userid].name;
+ 			}
+ 			if (userid === null)
+ 				return reply("Failed to find the user " + user);
+ 
+ 			if (userid == config.userid)
+ 				return reply("I'm sorry, I can't let you do that.");
+ 			j.bot.speak("@" + user + ", " + j.lang.get('pickup'));
+		});
+ 		if (cmd[0] == "!8ball") j.vip(d.userid, function() {
+ 			if (cmd.length < 2)
+				return reply("What do you wish to seek the answer to?");
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+//			for (var i = 1; i < cmd.length; ++i)
+// 				user += cmd[i]+(i+1 === cmd.length?"":" ");
+// 
+//			if (user in j.userNames) {
+//				userid = j.userNames[user];
+// 			}
+// 			if (user in j.users) {
+// 				userid = user;
+// 				user = j.users[userid].name;
+// 			}
+// 			if (userid === null)
+// 				return reply("Failed to find the user " + user);//
+// 
+// 			if (userid == config.userid)
+// 				return reply("I'm sorry, I can't let you do that.");
+			j.bot.speak(d.name + ", " + j.lang.get('ball'));
 		});
 	};
 };
