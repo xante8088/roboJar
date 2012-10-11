@@ -81,28 +81,6 @@ var Obor = function(j) {
 			if (userid == config.userid)
 				return reply("I'm sorry, I can't let you do that.");
 			j.bot.speak("@" + user + ", " + j.lang.get('pickup'));
-		});
-//			if (cmd[0] == "Manly as fuck") j.vip(d.userid, function() {
-//			if (cmd.length < 2)
-//				return reply("I'm not saying that.");
-//			var user="";
-//			var userid=null;
-//			var senderName = d.name;
-//			for (var i = 1; i < cmd.length; ++i)
-//				user += cmd[i]+(i+1 === cmd.length?"":" ");
-//
-//			if (user in j.userNames) {
-//				userid = j.userNames[user];
-//			}
-//			if (user in j.users) {
-//				userid = user;
-//				user = j.users[userid].name;
-//			}
-//			if (userid === null)
-//				return reply("Failed to find the user " + user);
-//
-//			if (userid == config.userid)
-//				return reply("I'm sorry, I can't let you do that.");
-//			j.bot.speak("@" + user + ", " + j.lang.get('pickup'));
-//		)};
+	});
 };
+module.exports = Obor;

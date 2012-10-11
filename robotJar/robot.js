@@ -142,10 +142,13 @@ var j = {
 			"Boooo!!!! Get off the deck!",
 			"/cb already!",
 			"Play some Gangnam Style already!",
-			"OP",
+			"why you play a overplayed song?",
 			"You look like a downs kid playing pretend Zelda",
 			"I thought this was Paris Hilton spinning for a second",
-			"You look like Lindsey Stirling"
+			"You look like Lindsey Stirling",
+			"Songs stuck, skip plz",
+			"Skip already!",
+			"Y U no Run the Trap?"
 		],
 		pickup: [
 			"Do you have a library card? Because I’m checking you out.",
