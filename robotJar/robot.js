@@ -29,6 +29,8 @@ var User = function(userid, name, j) {
 	this.name = name;
 	this.idleTimer = (new Date()).getTime();
 	this.awesomeTimer = (new Date()).getTime();
+//	this.lastjoin =
+//	this.lastpart =
 
 	self.init(j);
 };
@@ -148,7 +150,8 @@ var j = {
 			"You look like Lindsey Stirling",
 			"Songs stuck, skip plz",
 			"Skip already!",
-			"Y U no Run the Trap?"
+			"Y U no Run the Trap?",
+			"Quit point farming!"
 		],
 		pickup: [
 			"Do you have a library card? Because I’m checking you out.",
@@ -274,6 +277,15 @@ var j = {
 			"My reply is no.",
 			"Outlook good.",	
 			"Don't count on it."
+		],
+		tableflip: [
+			".",
+			",",
+			"'",
+			"`",
+			"~",
+			" Stop flipping the damn table!",
+			"^",
 		]
 	},
 	specialUsers: config.specialUsers,
@@ -701,6 +713,7 @@ var j = {
 			user = d.user[user];
 			j.users[user.userid] = new User(user.userid, user.name, j);
 			j.log(j.color.grey(user.name+' has joined'));
+//			update db with last join
 		}
 	},
 	onUserPart: function(d) {
@@ -710,6 +723,8 @@ var j = {
 			if (j.users[user.userid] && j.users[user.userid].autoProfileTimer)
 				clearTimeout(j.users[user.userid].autoProfileTimer);
 			delete j.users[user.userid];
+//			update db with last part
+//			j.users[
 		}
 	},
 	onUpdateUser: function(d) {

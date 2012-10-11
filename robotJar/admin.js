@@ -51,9 +51,9 @@ var Admin = function(j) {
 		return false;
 	}
 	self.handle = function(reply, d, ispm) {
-		if (d.text.substr(0,1) != "!")
+		if (d.text.substr(0,1) != "!" && d.text.substr(0,1) != "/")
 			return;
-			
+
 		var tcmd = d.text.split(' ');
 		var cmd = [];
 		for (var i in tcmd) {
@@ -229,6 +229,69 @@ var Admin = function(j) {
 // 				return reply("I'm sorry, I can't let you do that.");
 			j.bot.speak(d.name + ", " + j.lang.get('ball'));
 		});
+ 		if (cmd[0] == "!catfacts") j.vip(d.userid, function() {
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+
+			j.bot.speak(d.name + ", ask smiff");
+		});
+ 		if (cmd[0] == "!101112") j.vip(d.userid, function() {
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+
+			j.bot.speak(d.name + ", show some respect for smiff. The day he nearly died! Never forget!");
+//			j.bot.speak(d.name + ", show some respect for smiff. May he rest in peace. will smiff RIP -10/11/12");
+		});
+		 if (cmd[0] == "/tableflip") j.vip(d.userid, function() {
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+
+			j.bot.speak("/tablefix" + j.lang.get('tableflip'));
+		});
+		 if (cmd[0] == "/pointfarm") j.vip(d.userid, function() {
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+
+			j.bot.speak(d.name + ", Do you think this is a fucking game? /tableflip");
+		});
+		 if (cmd[0] == "/pointharvest") j.vip(d.userid, function() {
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+
+			j.bot.speak(d.name + ", You must first run /pointplant");
+		});
+		 if (cmd[0] == "/pointplant") j.vip(d.userid, function() {
+ 			var user="";
+ 			var userid=null;
+ 			var senderName = d.name;
+
+			j.bot.speak(d.name + " is trying to point farm!!!!");
+		});
+//		if (cmd[0] =="!seen") && (cmd[0] =="/seen") j.vip(d.userid, function() {
+//			var user=""
+//			var userid=null;
+//			var senderName = d.name;
+//			for (var i = 1; i < cmd.length; ++i)
+// 				user += cmd[i]+(i+1 === cmd.length?"":" ");
+// 
+//			if (user in j.userNames) {
+//				userid = j.userNames[user];
+// 			}
+// 			if (user in j.users) {
+// 				userid = user;
+// 				user = j.users[userid].name;
+// 			}
+// 			if (userid === null)
+// 				return reply("Failed to find the user " + user);//
+// 
+// 			if (userid == config.userid)
+// 				return reply("I'm sorry, I can't let you do that.");		
+		
 	};
 };
 
